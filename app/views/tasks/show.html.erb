@@ -1,0 +1,16 @@
+<h1>Tasks#show</h1>
+
+<%= link_to "Edit", edit_path(@task) %>
+
+<div class="card">
+  <p><%= @task[:details] %></p>
+</div>
+
+<% if @task[:completed] %>
+  <p><%= check_box("tag", tag.id, {checked: @task[:completed]}) %>This task is completed</p>
+<% else %>
+  <p><%= check_box("tag", tag.id, {checked: @task[:completed]}) %>This task is not completed yet</p>
+<% end %>
+
+<%= link_to "Back to list", tasks_path %>
+
