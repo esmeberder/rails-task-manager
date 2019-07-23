@@ -4,10 +4,10 @@
 
 <h1>Incompleted Tasks:</h1>
 <div class="container">
+        <%= form_tag(complete_all_path, method: :put) do %>
   <% @tasks.each do |task| %>
     <div class="task_card">
       <% if task[:completed] == false %>
-        <%= form_tag complete_all_path do  %>
         <%= check_box_tag 'tasks_ids[]', task.id %>
         <%= link_to task[:title], task_path(task) %>
         <%= link_to "Delete", destroy_path(task), method: :delete, data: { confirm: "Are you sure?" } %>

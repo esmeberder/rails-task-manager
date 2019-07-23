@@ -9,10 +9,11 @@ class TasksController < ApplicationController
   end
 
   def complete_all
-    @completed_tasks = Task.find(params[:tasks_ids])
-    raise
-    @completed_tasks.update_all(params[:completed] = true)
-    @completed_tasks.save
+    id_array = params[:tasks_ids]
+    id_array.each do |task|
+      @task = Task.find(task)
+      @task.update(completed: true)
+    end
     redirect_to tasks_path
   end
 
